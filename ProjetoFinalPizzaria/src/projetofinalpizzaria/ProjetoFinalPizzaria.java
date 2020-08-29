@@ -15,7 +15,11 @@ public class ProjetoFinalPizzaria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Quadrado q = new Quadrado(8);
+        //Pizza p = new Pizza(q, "premium");
+        //p.setArea(q.getArea());
+        //System.out.println("A area da pizza escolhida é: " + p.getArea());
+        
     }
     
 }

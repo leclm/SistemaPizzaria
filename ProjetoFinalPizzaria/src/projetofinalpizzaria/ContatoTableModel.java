@@ -5,7 +5,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class ContatoTableModel extends AbstractTableModel{
-    private String[] colunas=new String[]{"id","Nome", "Sobrenome", "Telefone"};
+    private String[] colunas=new String[]{"id","Nome", "Sobrenome", "Telefone", "Pedidos"};
 
     private List<Cliente> lista=new ArrayList();
 
@@ -49,6 +49,7 @@ public class ContatoTableModel extends AbstractTableModel{
             case 1: return customer.getNome();//if column 1 (name)
             case 2: return customer.getSobrenome();//if column 2 (birthday)
             case 3: return customer.getTelefone();
+            case 4: return customer.getPedidos();
             default : return null;
         }
     }
@@ -68,6 +69,9 @@ public class ContatoTableModel extends AbstractTableModel{
                 break;
             case 3:
                 customer.setTelefone((String) value);
+                break;
+            case 4:
+                customer.setPedidos((ArrayList<Pedido>) value);
                 break;
             default:
         }

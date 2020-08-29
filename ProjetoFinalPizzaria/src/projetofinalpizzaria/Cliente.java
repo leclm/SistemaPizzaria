@@ -5,6 +5,8 @@
  */
 package projetofinalpizzaria;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lelim
@@ -15,6 +17,7 @@ public class Cliente {
     private String nome;
     private String sobrenome;
     private String telefone;
+    private ArrayList<Pedido> pedidos;
 
     public Cliente(long id, String nome, String sobrenome, String telefone) {
         this.id = id;
@@ -54,4 +57,13 @@ public class Cliente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+    
+        public ArrayList<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(ArrayList<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+    
 }

@@ -12,17 +12,26 @@ package projetofinalpizzaria;
 public class Circulo extends Forma {
     private double raio;
 
+    public Circulo(double raio) {
+        this.raio = raio;
+    }
+
+    public Circulo() {
+    }
+    
     public double getRaio() {
         return raio;
     }
 
-    public void setRaio(double raio) {
+    public void setLado(double raio) {
+        if (raio < 7 || raio > 23) {
+            throw new IllegalArgumentException("Tamanho invalido para este formato!");
+        }
         this.raio = raio;
     }
 
     @Override
     public double calcularArea() {
         return (Math.pow(raio, 2) * Math.PI);
-    }
-    
+    }    
 }
