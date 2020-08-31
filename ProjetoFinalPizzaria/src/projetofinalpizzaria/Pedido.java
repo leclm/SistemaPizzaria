@@ -5,69 +5,60 @@
  */
 package projetofinalpizzaria;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lelim
  */
 public class Pedido {
-    // atributos
-    private Forma forma;
-    private String sabor;
-    private double dimensao;
-    private double area;
+    private long id;
+    private String status;
     private double preco;
+    private ArrayList<Forma> pizzas;
 
-    // construtor que solicita a dimencao da forma. Ex. Cliente pede uma pizza quadrada de lado 20cm, sabor simples
-    public Pedido(Forma forma, double dimensao, String sabor) {
-        this.forma = forma;
-        this.dimensao = dimensao;
-        this.sabor = sabor;
-    }
-    
-    // construtor que solicita a area desejada. Ex. Cliente pede uma pizza quadrada de 400cm², sabor simples
-    public Pedido(Forma forma, String sabor, double area) {
-        this.forma = forma;
-        this.sabor = sabor;
-        this.area = area;
+    public Pedido(long id) {
+        this.id = id;
+        this.status = "aberto";
+        pizzas = new ArrayList();
     }
 
-    public Forma getForma() {
-        return forma;
+    public long getId() {
+        return id;
     }
 
-    public void setForma(Forma forma) {
-        this.forma = forma;
-    }
-
-    public String getSabor() {
-        return sabor;
-    }
-
-    public void setSabor(String sabor) {
-        this.sabor = sabor;
-    }
-
-    public double getDimensao() {
-        return dimensao;
-    }
-
-    public void setDimensao(double dimensao) {
-        this.dimensao = dimensao;
-    }
-
-    public double getArea() {
-        return area;
-    }
-
-    public void setArea(double area) {
-        this.area = area;
+    public String getStatus() {
+        return status;
     }
 
     public double getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public ArrayList<Forma> getPizzas() {
+        return pizzas;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void addPizza(Forma pizza) {
+        this.pizzas.add(pizza);
+    }
+    
+    public void setPizza(Forma pizza, int index){
+        pizzas.set(index, pizza);
+    }
+    
+    public void removePizza(int index){
+        pizzas.remove(index);
+    }
+    
+    private void setPreco(){
+        preco = 0;
+        pizzas.forEach(pizza -> {
+            preco+= pizza.getPrecoTotal();
+        });
     }
 }
