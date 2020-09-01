@@ -5,6 +5,7 @@
  */
 package projetofinalpizzaria;
 
+import CadastroSabores.TelaSabores;
 import java.util.ArrayList;
 
 /**
@@ -17,12 +18,9 @@ public class ProjetoFinalPizzaria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Quadrado q = new Quadrado();
-        ArrayList<Sabor> sabores = new ArrayList();
+        TelaSabores sabores = new TelaSabores();
         
-        q.setPizza(sabores, 0);
-        
-        System.out.print(q.getTamcm2());
+        sabores.setVisible(true);
         
         //Pizza p = new Pizza(q, "premium");
         //p.setArea(q.getArea());
