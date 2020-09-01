@@ -8,7 +8,7 @@ public class Triangulo extends Forma{
     
     @Override
     public void calTamcm(double tamcm2) {
-        super.setTamcm((Math.sqrt(tamcm2 * 4) / Math.sqrt(3)));
+        super.setTamcm((Math.sqrt(tamcm2 * 4) / 3));
     }
 
     @Override
