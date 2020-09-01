@@ -19,7 +19,7 @@ public class JanelaCadastroCliente extends javax.swing.JFrame {
      */
     public JanelaCadastroCliente() {
         initComponents();
-        botoesCadastro1.setJanela(this);
+        botoesCadastroCliente1.setJanela(this);
     }
 
     /**
@@ -32,8 +32,8 @@ public class JanelaCadastroCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         tabelaClientesCadastrados1 = new interfacesSistema.TabelaClientesCadastrados();
-        botoesCadastro1 = new interfacesSistema.botoesCadastro();
-        formularioCliente1 = new interfacesSistema.formularioCliente();
+        formularioCadastroCliente1 = new interfacesSistema.FormularioCadastroCliente();
+        botoesCadastroCliente1 = new interfacesSistema.BotoesCadastroCliente();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,24 +44,29 @@ public class JanelaCadastroCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tabelaClientesCadastrados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botoesCadastro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(formularioCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addComponent(formularioCadastroCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(botoesCadastroCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(tabelaClientesCadastrados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(formularioCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botoesCadastro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(formularioCadastroCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabelaClientesCadastrados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(botoesCadastroCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tabelaClientesCadastrados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -69,9 +74,9 @@ public class JanelaCadastroCliente extends javax.swing.JFrame {
     ArrayList<Cliente> clientes = new ArrayList<>();
     Cliente cliente;
     public void cadastrarCliente() {
-        String nome = formularioCliente1.getTxtNome().getText();
-        String sobrenome = formularioCliente1.getTxtSobrenome().getText();
-        String telefone = formularioCliente1.getTxtTelefone().getText();
+        String nome = formularioCadastroCliente1.getTxtNome().getText();
+        String sobrenome = formularioCadastroCliente1.getTxtSobrenome().getText();
+        String telefone = formularioCadastroCliente1.getTxtTelefone().getText();
         
         cliente = new Cliente(clienteID++, nome, sobrenome, telefone);
         clientes.add(cliente);
@@ -79,7 +84,7 @@ public class JanelaCadastroCliente extends javax.swing.JFrame {
     }
     
     public void excluirCadastro() {
-        int idCliente = Integer.parseInt(formularioCliente1.getTxtID().getText());
+        int idCliente = Integer.parseInt(formularioCadastroCliente1.getTxtID().getText());
         tabelaClientesCadastrados1.getModeloTabela().removeContato(clientes.get(idCliente));
         clientes.remove(clientes.get(idCliente));
         clienteID--;
@@ -92,10 +97,10 @@ public class JanelaCadastroCliente extends javax.swing.JFrame {
     }
     
     public void alterarCadastro() {
-        String nome = formularioCliente1.getTxtNome().getText();
-        String sobrenome = formularioCliente1.getTxtSobrenome().getText();
-        String telefone = formularioCliente1.getTxtTelefone().getText();
-        int ID = Integer.parseInt(formularioCliente1.getTxtID().getText());
+        String nome = formularioCadastroCliente1.getTxtNome().getText();
+        String sobrenome = formularioCadastroCliente1.getTxtSobrenome().getText();
+        String telefone = formularioCadastroCliente1.getTxtTelefone().getText();
+        int ID = Integer.parseInt(formularioCadastroCliente1.getTxtID().getText());
         tabelaClientesCadastrados1.getModeloTabela().setValueAt(nome, ID, 1);
         tabelaClientesCadastrados1.getModeloTabela().setValueAt(sobrenome, ID, 2);
         tabelaClientesCadastrados1.getModeloTabela().setValueAt(telefone, ID, 3);
@@ -138,8 +143,8 @@ public class JanelaCadastroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private interfacesSistema.botoesCadastro botoesCadastro1;
-    private interfacesSistema.formularioCliente formularioCliente1;
+    private interfacesSistema.BotoesCadastroCliente botoesCadastroCliente1;
+    private interfacesSistema.FormularioCadastroCliente formularioCadastroCliente1;
     private interfacesSistema.TabelaClientesCadastrados tabelaClientesCadastrados1;
     // End of variables declaration//GEN-END:variables
 }
