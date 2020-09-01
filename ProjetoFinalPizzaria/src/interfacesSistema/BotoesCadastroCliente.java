@@ -11,14 +11,14 @@ import javax.swing.JButton;
  *
  * @author lelim
  */
-public class botoesCadastro extends javax.swing.JPanel {
+public class BotoesCadastroCliente extends javax.swing.JPanel {
     private JanelaCadastroCliente janela;
     private TabelaClientesCadastrados tabela;
    
     /**
      * Creates new form botoesCadastro
      */
-    public botoesCadastro() {
+    public BotoesCadastroCliente() {
         initComponents();
     }
 

@@ -11,12 +11,12 @@ import javax.swing.JTextPane;
  *
  * @author lelim
  */
-public class formularioCliente extends javax.swing.JPanel {
+public class FormularioCadastroCliente extends javax.swing.JPanel {
 
     /**
      * Creates new form formularioCliente
      */
-    public formularioCliente() {
+    public FormularioCadastroCliente() {
         initComponents();
     }
 
@@ -42,6 +42,8 @@ public class formularioCliente extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         txtID = new javax.swing.JTextPane();
         jLabel4 = new javax.swing.JLabel();
+
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setText("Nome:");
 
