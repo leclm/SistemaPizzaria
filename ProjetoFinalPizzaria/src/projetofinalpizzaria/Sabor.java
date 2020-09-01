@@ -12,17 +12,20 @@ package projetofinalpizzaria;
 public class Sabor {
     private long id;
     private int tipo; //0 = simples; 1 = especial; 2 = premium
+    private double preco;
     private String nome;
 
-    public Sabor(long id, int tipo, String nome) {
+    public Sabor(long id, int tipo, String nome, double preco) {
         this.id = id;
         this.tipo = tipo;
         this.nome = nome;
+        this.preco = preco;
     }
     
     public void setSabor(Sabor sabor){
-        tipo = sabor.tipo;
-        nome = sabor.nome;
+        tipo = sabor.getTipo();
+        nome = sabor.getNome();
+        preco = sabor.getPreco();
     }
 
     public long getId() {
@@ -35,5 +38,9 @@ public class Sabor {
 
     public String getNome() {
         return nome;
+    }
+
+    public double getPreco() {
+        return preco;
     }
 }
