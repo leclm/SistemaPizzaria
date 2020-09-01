@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projetofinalpizzaria;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author lelim
- */
 public class Pedido {
     private long id;
     private String status;
@@ -45,10 +36,12 @@ public class Pedido {
 
     public void addPizza(Forma pizza) {
         this.pizzas.add(pizza);
+        setPreco();
     }
     
     public void setPizza(Forma pizza, int index){
         pizzas.set(index, pizza);
+        setPreco();
     }
     
     public void removePizza(int index){

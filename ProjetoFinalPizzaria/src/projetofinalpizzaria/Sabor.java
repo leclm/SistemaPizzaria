@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projetofinalpizzaria;
 
-/**
- *
- * @author lelim
- */
 public class Sabor {
     private long id;
     private int tipo; //0 = simples; 1 = especial; 2 = premium
@@ -42,5 +33,21 @@ public class Sabor {
 
     public double getPreco() {
         return preco;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }
