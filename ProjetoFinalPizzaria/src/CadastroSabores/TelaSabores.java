@@ -30,6 +30,18 @@ public class TelaSabores extends javax.swing.JFrame {
         this.especial = 4;
         this.premium = 5;
     }
+    
+    public void setValores(double simples, double especial, double premium){
+        this.simples = simples;
+        this.especial = especial;
+        this.premium = premium;
+        
+        sabores.forEach(sabor -> {
+            int tipo = sabor.getTipo();
+            sabor.setPreco((tipo == 0 ? simples : ( tipo == 1 ? especial : premium )));
+        });
+        atualizaTabela();
+    }
 
     public ArrayList<Sabor> getSabores() {
         return sabores;
@@ -45,7 +57,7 @@ public class TelaSabores extends javax.swing.JFrame {
 
         Sabor sabor = new Sabor(idContador++, tipo, nome, preco);
         sabores.add(sabor);
-        tabelaSabores.getModeloTabela().adicionaSabor(sabor);
+        atualizaTabela();
     }
     
     public void excluir() {
@@ -63,8 +75,8 @@ public class TelaSabores extends javax.swing.JFrame {
         if(index < 0)
             return;
         
-        tabelaSabores.getModeloTabela().removeSabor(sabores.get(index));
         sabores.remove(index);
+        atualizaTabela();
     }
     
     public void alterar() {
@@ -73,7 +85,7 @@ public class TelaSabores extends javax.swing.JFrame {
         double preco = tipo == 0 ? this.simples : ( tipo == 1 ? this.especial : this.premium );
         long id = inputSabores.getID();
         
-        if(id < 0)
+        if(id < 0 || "".equals(nome))
             return;
         
         Sabor sabor = new Sabor(id, tipo, nome, preco); 
@@ -89,10 +101,11 @@ public class TelaSabores extends javax.swing.JFrame {
             return;
         sabores.get(index).setSabor(sabor);
         
-        tabelaSabores.getModeloTabela().setValueAt(sabor.getId(), index,0);
-        tabelaSabores.getModeloTabela().setValueAt(sabor.getNome(), index,1);
-        tabelaSabores.getModeloTabela().setValueAt(sabor.getTipo(), index,2);
-        tabelaSabores.getModeloTabela().setValueAt(sabor.getPreco(), index,3);
+        atualizaTabela();
+    }
+    
+    private void atualizaTabela(){
+        tabelaSabores.getModeloTabela().setListaSabores(sabores);
     }
 
     /**
@@ -130,9 +143,9 @@ public class TelaSabores extends javax.swing.JFrame {
                 .addComponent(inputSabores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(botoesSabores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tabelaSabores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tabelaSabores, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
