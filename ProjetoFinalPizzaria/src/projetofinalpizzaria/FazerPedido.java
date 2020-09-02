@@ -23,6 +23,7 @@ public class FazerPedido extends javax.swing.JFrame {
     Circulo c = new Circulo();
     Forma pizza;
     
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -50,6 +51,7 @@ public class FazerPedido extends javax.swing.JFrame {
         sabor1 = new javax.swing.JLabel();
         sabor2 = new javax.swing.JLabel();
         preco = new javax.swing.JLabel();
+        confirmaSabores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,7 +107,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
-        botaoCirculo.setText("Circulo");
+        botaoCirculo.setText("Círculo");
         botaoCirculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCirculoActionPerformed(evt);
@@ -142,7 +144,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
-        calculaPreco.setText("Calcular preco");
+        calculaPreco.setText("Calcular preço");
         calculaPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 calculaPrecoActionPerformed(evt);
@@ -159,7 +161,14 @@ public class FazerPedido extends javax.swing.JFrame {
 
         sabor2.setText("Sabor 2");
 
-        preco.setText("Preco");
+        preco.setText("Preço");
+
+        confirmaSabores.setText("Confirmar Sabores");
+        confirmaSabores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmaSaboresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,29 +176,6 @@ public class FazerPedido extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(defineSabor1)
-                        .addGap(82, 82, 82)
-                        .addComponent(defineSabor2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(calculaPreco)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botaoCm)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botaoCm2))
-                            .addComponent(sabores, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(digitaSabor1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(digitaSabor2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -225,6 +211,31 @@ public class FazerPedido extends javax.swing.JFrame {
                             .addComponent(preco)
                             .addComponent(sabor2))))
                 .addGap(203, 203, 203))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(defineSabor1)
+                        .addGap(82, 82, 82)
+                        .addComponent(defineSabor2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(calculaPreco))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botaoCm)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botaoCm2))
+                            .addComponent(sabores, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(digitaSabor1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(digitaSabor2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(confirmaSabores)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,10 +278,11 @@ public class FazerPedido extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(digitaSabor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(digitaSabor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(digitaSabor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmaSabores))
                 .addGap(18, 18, 18)
                 .addComponent(calculaPreco)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -308,7 +320,7 @@ public class FazerPedido extends javax.swing.JFrame {
                     tamanho.setText(String.valueOf(q.getTamcm()));
                 }
                 break;
-            case ("Triângulo"):
+            case ("Triangulo"):
                 if (definirTamanho.getText() == "Tamanho em Cm"){
                     t.calTamcm2(Double.parseDouble(digitaTamanho.getText()));
                     tamanho.setText(String.valueOf(t.getTamcm2()));
@@ -318,7 +330,7 @@ public class FazerPedido extends javax.swing.JFrame {
                     tamanho.setText(String.valueOf(t.getTamcm()));
                 }
                 break;
-            case ("Círculo"):
+            case ("Circulo"):
                 if (definirTamanho.getText() == "Tamanho em Cm"){
                     c.calTamcm2(Double.parseDouble(digitaTamanho.getText()));
                     tamanho.setText(String.valueOf(c.getTamcm2()));
@@ -332,16 +344,22 @@ public class FazerPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_digitaTamanhoActionPerformed
 
     private void digitaSabor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitaSabor1ActionPerformed
-        sabor1.setText(digitaSabor1.getText());
+        
     }//GEN-LAST:event_digitaSabor1ActionPerformed
 
     private void digitaSabor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitaSabor2ActionPerformed
-        sabor2.setText(digitaSabor2.getText());
+       
     }//GEN-LAST:event_digitaSabor2ActionPerformed
 
-    private void calculaPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculaPreçoActionPerformed
+    private void confirmaSaboresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaSaboresActionPerformed
+        sabor1.setText(digitaSabor1.getText());
+        sabor2.setText(digitaSabor2.getText());
         
-    }//GEN-LAST:event_calculaPrecoActionPerformed
+    }//GEN-LAST:event_confirmaSaboresActionPerformed
+
+    private void calculaPrecoActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        System.out.println("Em progresso...");
+    }                                            
 
     /**
      * @param args the command line arguments
@@ -385,6 +403,7 @@ public class FazerPedido extends javax.swing.JFrame {
     private javax.swing.JButton botaoQuadrado;
     private javax.swing.JButton botaoTriangulo;
     private javax.swing.JButton calculaPreco;
+    private javax.swing.JButton confirmaSabores;
     private javax.swing.JLabel defineSabor1;
     private javax.swing.JLabel defineSabor2;
     private javax.swing.JLabel definirTamanho;
