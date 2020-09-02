@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class saboresTabelaModal extends AbstractTableModel{
-    private String[] colunas=new String[]{"id","Nome", "Tipo", "Preço"};
+    private String[] colunas=new String[]{"id","Nome", "Tipo"};
 
     private List<Sabor> lista=new ArrayList();
 
@@ -37,9 +37,6 @@ public class saboresTabelaModal extends AbstractTableModel{
     @Override
     public boolean isCellEditable(int row, int column) {
         return false;
-        //if(column==0)
-        //    return false;
-        //return true;
     }
 
     @Override
@@ -49,7 +46,6 @@ public class saboresTabelaModal extends AbstractTableModel{
             case 0: return customer.getId();//if column 0 (code)
             case 1: return customer.getNome();//if column 1 (name)
             case 2: return customer.getTipo() == 0 ? "Simples" : (customer.getTipo() == 1 ? "Especial" : "Premium");
-            case 3: return customer.getPreco();
             default : return null;
         }
     }
@@ -67,49 +63,14 @@ public class saboresTabelaModal extends AbstractTableModel{
             case 2:
                 customer.setTipo((int) value);
                 break;
-            case 3:
-                customer.setPreco((double) value);
-                break;
             default:
         }
         this.fireTableCellUpdated(row, col);
-    }
-
-    public boolean removeSabor(Sabor customer) {
-        int linha = this.lista.indexOf(customer);
-        boolean result = this.lista.remove(customer);
-        this.fireTableRowsDeleted(linha,linha);//update JTable
-        return result;
-    }
-
-    public void adicionaSabor(Sabor customer) {
-        this.lista.add(customer);
-        //this.fireTableDataChanged();
-        this.fireTableRowsInserted(lista.size()-1,lista.size()-1);//update JTable
     }
 
     public void setListaSabores(List<Sabor> sabores) {
         this.lista = sabores;
         this.fireTableDataChanged();
         //this.fireTableRowsInserted(0,contatos.size()-1);//update JTable
-    }
-
-    public void limpaTabela() {
-        int indice = lista.size()-1;
-        if(indice<0)
-            indice=0;
-        this.lista = new ArrayList();
-        this.fireTableRowsDeleted(0,indice);//update JTable
-    }
-
-    public Sabor getSabor(int linha){
-        return lista.get(linha);
-    }
-
-    void removeSabores(List<Sabor> listaParaExcluir) {
-        listaParaExcluir.forEach((sabor) -> {
-            removeSabor(sabor);
-        });
-    }
-    
+    }    
 }
