@@ -8,6 +8,8 @@ package projetofinalpizzaria;
 import CadastroSabores.TelaSabores;
 import java.util.ArrayList;
 
+import interfacesSistema.JanelaCadastroCliente;
+
 /**
  *
  * @author lelim
@@ -21,7 +23,7 @@ public class ProjetoFinalPizzaria {
         TelaSabores sabores = new TelaSabores();
         
         sabores.setVisible(true);
-        
+       
         //Pizza p = new Pizza(q, "premium");
         //p.setArea(q.getArea());
         //System.out.println("A area da pizza escolhida é: " + p.getArea());

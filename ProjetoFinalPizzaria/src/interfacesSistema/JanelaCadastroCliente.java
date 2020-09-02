@@ -5,7 +5,6 @@
  */
 package interfacesSistema;
 
-import java.util.ArrayList;
 import projetofinalpizzaria.Cliente;
 
 /**
@@ -13,7 +12,9 @@ import projetofinalpizzaria.Cliente;
  * @author lelim
  */
 public class JanelaCadastroCliente extends javax.swing.JFrame {
+    Datastore datastore = Datastore.getInstance();
     private long clienteID;
+    
     /**
      * Creates new form JanelaCadastroCliente
      */
@@ -35,7 +36,7 @@ public class JanelaCadastroCliente extends javax.swing.JFrame {
         formularioCadastroCliente1 = new interfacesSistema.FormularioCadastroCliente();
         botoesCadastroCliente1 = new interfacesSistema.BotoesCadastroCliente();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,27 +72,31 @@ public class JanelaCadastroCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    ArrayList<Cliente> clientes = new ArrayList<>();
-    Cliente cliente;
+    
     public void cadastrarCliente() {
         String nome = formularioCadastroCliente1.getTxtNome().getText();
         String sobrenome = formularioCadastroCliente1.getTxtSobrenome().getText();
         String telefone = formularioCadastroCliente1.getTxtTelefone().getText();
         
-        cliente = new Cliente(clienteID++, nome, sobrenome, telefone);
-        clientes.add(cliente);
+        Cliente cliente = new Cliente(clienteID++, nome, sobrenome, telefone);
+        datastore.getClientes().add(cliente);
         tabelaClientesCadastrados1.getModeloTabela().adicionaContato(cliente);
     }
     
     public void excluirCadastro() {
         int idCliente = Integer.parseInt(formularioCadastroCliente1.getTxtID().getText());
-        tabelaClientesCadastrados1.getModeloTabela().removeContato(clientes.get(idCliente));
-        clientes.remove(clientes.get(idCliente));
+        
+        tabelaClientesCadastrados1.getModeloTabela().removeContato(datastore.getClientes().get(idCliente));
+        datastore.getClientes().remove(datastore.getClientes().get(idCliente));
         clienteID--;
         
-        for (int i = 0; i < clientes.size(); i++) {
-            if (idCliente < clientes.get(i).getId()) {
-                clientes.get(i).setId(clientes.get(i).getId() - 1);
+        for (int i = 0; i < datastore.getClientes().size(); i++) {
+            try {
+                if (idCliente < datastore.getClientes().get(idCliente).getId()) {
+                    datastore.getClientes().get(idCliente).setId(datastore.getClientes().get(idCliente).getId() - 1);
+                }
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("ERRO");
             }
         }
     }
@@ -105,7 +110,6 @@ public class JanelaCadastroCliente extends javax.swing.JFrame {
         tabelaClientesCadastrados1.getModeloTabela().setValueAt(sobrenome, ID, 2);
         tabelaClientesCadastrados1.getModeloTabela().setValueAt(telefone, ID, 3);
     }
-    
     
     /**
      * @param args the command line arguments
