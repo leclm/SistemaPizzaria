@@ -30,4 +30,9 @@ public class ProjetoFinalPizzaria {
         
     }
     
+    /*public static void main(String[] args) {
+        ArrayList<Sabores> arraySabores = new ArrayList();
+        TelaSabores sabores = new TelaSabores(arraySabores);
+    }*/
+    
 }

@@ -30,7 +30,7 @@ public class TelaSabores extends javax.swing.JFrame {
         this.especial = 4;
         this.premium = 5;
     }
-    
+      
     public void setValores(double simples, double especial, double premium){
         this.simples = simples;
         this.especial = especial;
