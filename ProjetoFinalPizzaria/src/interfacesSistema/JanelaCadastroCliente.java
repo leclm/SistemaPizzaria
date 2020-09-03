@@ -86,19 +86,19 @@ public class JanelaCadastroCliente extends javax.swing.JFrame {
     public void excluirCadastro() {
         int idCliente = Integer.parseInt(formularioCadastroCliente1.getTxtID().getText());
         
-        tabelaClientesCadastrados1.getModeloTabela().removeContato(datastore.getClientes().get(idCliente));
-        datastore.getClientes().remove(datastore.getClientes().get(idCliente));
-        clienteID--;
+        int index = -1;
+        for(int i =0; i < datastore.getClientes().size(); i++){
+            if(datastore.getClientes().get(i).getId() == idCliente)
+                index = i;
+        } 
         
-        for (int i = 0; i < datastore.getClientes().size(); i++) {
-            try {
-                if (idCliente < datastore.getClientes().get(idCliente).getId()) {
-                    datastore.getClientes().get(idCliente).setId(datastore.getClientes().get(idCliente).getId() - 1);
-                }
-            } catch (IndexOutOfBoundsException e) {
-                System.out.println("ERRO");
-            }
+        if(index < 0){
+            return;
         }
+        
+        tabelaClientesCadastrados1.getModeloTabela().removeContato(datastore.getClientes().get(index));
+        datastore.getClientes().remove(datastore.getClientes().get(index)); 
+ 
     }
     
     public void alterarCadastro() {
@@ -106,9 +106,20 @@ public class JanelaCadastroCliente extends javax.swing.JFrame {
         String sobrenome = formularioCadastroCliente1.getTxtSobrenome().getText();
         String telefone = formularioCadastroCliente1.getTxtTelefone().getText();
         int ID = Integer.parseInt(formularioCadastroCliente1.getTxtID().getText());
-        tabelaClientesCadastrados1.getModeloTabela().setValueAt(nome, ID, 1);
-        tabelaClientesCadastrados1.getModeloTabela().setValueAt(sobrenome, ID, 2);
-        tabelaClientesCadastrados1.getModeloTabela().setValueAt(telefone, ID, 3);
+        
+        int index = -1;
+        for(int i =0; i < datastore.getClientes().size(); i++){
+            if(datastore.getClientes().get(i).getId() == ID)
+                index = i;
+        } 
+        
+        if(index < 0){
+            return;
+        }
+        
+        tabelaClientesCadastrados1.getModeloTabela().setValueAt(nome, index, 1);
+        tabelaClientesCadastrados1.getModeloTabela().setValueAt(sobrenome, index, 2);
+        tabelaClientesCadastrados1.getModeloTabela().setValueAt(telefone, index, 3);
     }
     
     /**
