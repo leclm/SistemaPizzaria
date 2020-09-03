@@ -27,63 +27,29 @@ public class JanelaAlterarPedidoAntigo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buscarClienteCadastrado2 = new interfaceAlterarPedido.BuscarClienteCadastrado();
-        btnAlterarPedido = new javax.swing.JButton();
-        lblIDcliente = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtIDCliente = new javax.swing.JTextPane();
+        buscarClienteCadastrado1 = new interfaceAlterarPedido.BuscarClienteCadastrado();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        btnAlterarPedido.setBackground(new java.awt.Color(0, 153, 153));
-        btnAlterarPedido.setText("Alterar Pedido");
-        btnAlterarPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarPedidoActionPerformed(evt);
-            }
-        });
-
-        lblIDcliente.setText("ID do Cliente:");
-
-        jScrollPane1.setViewportView(txtIDCliente);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buscarClienteCadastrado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblIDcliente)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
-                        .addComponent(btnAlterarPedido)
-                        .addGap(202, 202, 202))))
+                .addContainerGap()
+                .addComponent(buscarClienteCadastrado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buscarClienteCadastrado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblIDcliente)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAlterarPedido))
-                .addGap(25, 25, 25))
+                .addContainerGap()
+                .addComponent(buscarClienteCadastrado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAlterarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarPedidoActionPerformed
-        // validar acesso do botao
-    }//GEN-LAST:event_btnAlterarPedidoActionPerformed
     
     /**
      * @param args the command line arguments
@@ -121,10 +87,6 @@ public class JanelaAlterarPedidoAntigo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterarPedido;
-    private interfaceAlterarPedido.BuscarClienteCadastrado buscarClienteCadastrado2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblIDcliente;
-    private javax.swing.JTextPane txtIDCliente;
+    private interfaceAlterarPedido.BuscarClienteCadastrado buscarClienteCadastrado1;
     // End of variables declaration//GEN-END:variables
 }
