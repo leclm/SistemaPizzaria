@@ -30,29 +30,56 @@ public class TelaSabores extends javax.swing.JFrame {
         this.especial = 4;
         this.premium = 5;
     }
+    
+    public void setValores(double simples, double especial, double premium){
+        this.simples = simples;
+        this.especial = especial;
+        this.premium = premium;
+        
+        sabores.forEach(sabor -> {
+            int tipo = sabor.getTipo();
+            sabor.setPreco((tipo == 0 ? simples : ( tipo == 1 ? especial : premium )));
+        });
+        atualizaTabela();
+    }
 
     public ArrayList<Sabor> getSabores() {
         return sabores;
     }
     
     public void cadastrar() {
+        labelTextError.setText("");
         String nome = inputSabores.getNomeSabor();
         int tipo = inputSabores.getTipo();
         double preco = tipo == 0 ? this.simples : ( tipo == 1 ? this.especial : this.premium );
         
-        if( "".equals(nome) || tipo < 0)
+        if( "".equals(nome)){
+            labelTextError.setText("Necesário informar o nome do sabor.");
             return;
+        }
+        if (tipo < 0){
+            labelTextError.setText("Necesário informar o tipo de pizza.");
+            return;
+        }
 
         Sabor sabor = new Sabor(idContador++, tipo, nome, preco);
         sabores.add(sabor);
-        tabelaSabores.getModeloTabela().adicionaSabor(sabor);
+        atualizaTabela();
     }
     
     public void excluir() {
+        labelTextError.setText("");
         long id = inputSabores.getID();
         
-        if(id < 0 || sabores.isEmpty())
+        if(id < 0){
+            labelTextError.setText("ID inválido.");
             return;
+        }
+        
+        if(sabores.isEmpty()){
+            labelTextError.setText("Não há sabores cadastrados.");
+            return;
+        }
         
         int index = -1;
         for(int i =0; i < sabores.size(); i++){
@@ -60,21 +87,41 @@ public class TelaSabores extends javax.swing.JFrame {
                 index = i;
         } 
         
-        if(index < 0)
+        if(index < 0){
+            labelTextError.setText("ID não encontrado.");
             return;
+        }
         
-        tabelaSabores.getModeloTabela().removeSabor(sabores.get(index));
         sabores.remove(index);
+        atualizaTabela();
     }
     
     public void alterar() {
+        labelTextError.setText("");
         String nome = inputSabores.getNomeSabor();
         int tipo = inputSabores.getTipo();
         double preco = tipo == 0 ? this.simples : ( tipo == 1 ? this.especial : this.premium );
         long id = inputSabores.getID();
         
-        if(id < 0)
+        if(id < 0){
+            labelTextError.setText("ID inválido.");
             return;
+        }
+        
+        if(sabores.isEmpty()){
+            labelTextError.setText("Não há sabores cadastrados.");
+            return;
+        }
+        
+        if(tipo < 0) {
+            labelTextError.setText("Necesário informar o tipo do sabor.");
+            return;
+        }
+        
+        if("".equals(nome)){
+            labelTextError.setText("Necesário informar o nome do sabor.");
+            return;
+        }
         
         Sabor sabor = new Sabor(id, tipo, nome, preco); 
         
@@ -85,14 +132,18 @@ public class TelaSabores extends javax.swing.JFrame {
                 index = i;
         }        
         
-        if(index < 0)
+        if(index < 0){
+            labelTextError.setText("ID não encontrado.");
             return;
+        }
+        
         sabores.get(index).setSabor(sabor);
         
-        tabelaSabores.getModeloTabela().setValueAt(sabor.getId(), index,0);
-        tabelaSabores.getModeloTabela().setValueAt(sabor.getNome(), index,1);
-        tabelaSabores.getModeloTabela().setValueAt(sabor.getTipo(), index,2);
-        tabelaSabores.getModeloTabela().setValueAt(sabor.getPreco(), index,3);
+        atualizaTabela();
+    }
+    
+    private void atualizaTabela(){
+        tabelaSabores.getModeloTabela().setListaSabores(sabores);
     }
 
     /**
@@ -107,8 +158,14 @@ public class TelaSabores extends javax.swing.JFrame {
         tabelaSabores = new CadastroSabores.TabelaSabores();
         botoesSabores = new CadastroSabores.botoesSabores();
         inputSabores = new CadastroSabores.inputSabores();
+        labelTextError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        labelTextError.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelTextError.setForeground(new java.awt.Color(255, 0, 0));
+        labelTextError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTextError.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,18 +178,22 @@ public class TelaSabores extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(inputSabores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(inputSabores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTextError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(inputSabores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(botoesSabores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelTextError, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botoesSabores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(tabelaSabores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(48, 48, 48))
         );
 
         pack();
@@ -176,6 +237,7 @@ public class TelaSabores extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private CadastroSabores.botoesSabores botoesSabores;
     private CadastroSabores.inputSabores inputSabores;
+    private javax.swing.JLabel labelTextError;
     private CadastroSabores.TabelaSabores tabelaSabores;
     // End of variables declaration//GEN-END:variables
 }
