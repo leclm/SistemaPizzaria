@@ -6,14 +6,15 @@
 package projetofinalpizzaria;
 
 import CadastroSabores.TelaSabores;
+import interfacesSistema.Datastore;
 import java.util.ArrayList;
 
 /**
  *
- * @author enzoradel
+ * @author enzoradel 
  */
 public class FazerPedido extends javax.swing.JFrame {
-
+    Datastore datastore = Datastore.getInstance();
     /**
      * Creates new form FazerPedido
      */
@@ -42,7 +43,7 @@ public class FazerPedido extends javax.swing.JFrame {
     
     private static ArrayList<Pizza> informaPizza = new ArrayList<>();
     
-    private ArrayList<Sabor> sabores = new ArrayList<>();
+    //private ArrayList<Sabor> sabores = new ArrayList<>();
     
     boolean validaSabor;
     
@@ -83,8 +84,9 @@ public class FazerPedido extends javax.swing.JFrame {
         numSabores = new javax.swing.JLabel();
         mensagemErro = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        escolheFormato.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         escolheFormato.setText("Escolher o formato");
 
         tipoTamanho.setText("Tamanho");
@@ -97,6 +99,7 @@ public class FazerPedido extends javax.swing.JFrame {
 
         saboresLista.setViewportView(listaSabores);
 
+        botaoQuadrado.setBackground(new java.awt.Color(0, 153, 153));
         botaoQuadrado.setText("Quadrado");
         botaoQuadrado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +107,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
+        botaoTriangulo.setBackground(new java.awt.Color(0, 153, 153));
         botaoTriangulo.setText("Triangulo");
         botaoTriangulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +115,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
+        botaoCirculo.setBackground(new java.awt.Color(0, 153, 153));
         botaoCirculo.setText("Círculo");
         botaoCirculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +123,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
+        botaoCm.setBackground(new java.awt.Color(0, 153, 153));
         botaoCm.setText("Em cm");
         botaoCm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +131,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
+        botaoCm2.setBackground(new java.awt.Color(0, 153, 153));
         botaoCm2.setText("Em cm2");
         botaoCm2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +155,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
+        calculaPreco.setBackground(new java.awt.Color(0, 153, 153));
         calculaPreco.setText("Calcular preço");
         calculaPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +175,7 @@ public class FazerPedido extends javax.swing.JFrame {
 
         preco.setText(" ");
 
+        _1Sabor.setBackground(new java.awt.Color(0, 153, 153));
         _1Sabor.setText("1 Sabor");
         _1Sabor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +183,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
+        _2Sabores.setBackground(new java.awt.Color(0, 153, 153));
         _2Sabores.setText("2 Sabores");
         _2Sabores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +191,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
+        addSabores.setBackground(new java.awt.Color(0, 153, 153));
         addSabores.setText("Adicionar Sabores");
         addSabores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +199,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
+        confirmaPizza.setBackground(new java.awt.Color(0, 153, 153));
         confirmaPizza.setText("Confirmar pizza");
         confirmaPizza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,38 +218,55 @@ public class FazerPedido extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(_1Sabor)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(saboresLista, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(114, 114, 114)
+                                        .addComponent(tipoTamanho))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(_1Sabor)
+                                            .addComponent(saboresLista, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(layout.createSequentialGroup()
+                                    .addGap(164, 164, 164)
+                                    .addComponent(_2Sabores)))
+                            .addGap(37, 37, 37))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(19, 19, 19)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(escolheFormato)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(botaoQuadrado)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(botaoTriangulo)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(botaoCirculo))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(51, 51, 51)
                                     .addComponent(botaoCm)
                                     .addGap(50, 50, 50)
-                                    .addComponent(botaoCm2)))))
+                                    .addComponent(botaoCm2)))
+                            .addGap(28, 28, 28)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(defineSabor1)
-                        .addGap(75, 75, 75)
-                        .addComponent(defineSabor2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(digitaTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(escolheFormato)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(botaoQuadrado)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botaoTriangulo))
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(digitaSabor1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(defineSabor1))
+                                .addGap(45, 45, 45)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(defineSabor2)
+                                    .addComponent(digitaSabor2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(tipoTamanho)
-                                .addGap(38, 38, 38)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoCirculo)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(76, 76, 76)
+                                .addComponent(calculaPreco)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(mensagemErro, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,7 +281,7 @@ public class FazerPedido extends javax.swing.JFrame {
                                 .addComponent(forma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)))
                         .addGap(78, 78, 78))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 220, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(pizzaEscolhida)
@@ -263,20 +292,9 @@ public class FazerPedido extends javax.swing.JFrame {
                                     .addComponent(addSabores))
                                 .addGap(178, 178, 178))))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(_2Sabores))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(calculaPreco)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(digitaSabor1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(digitaSabor2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(555, 555, 555))
+                .addGap(88, 88, 88)
+                .addComponent(digitaTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,21 +305,7 @@ public class FazerPedido extends javax.swing.JFrame {
                     .addComponent(pizzaEscolhida))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botaoQuadrado)
-                            .addComponent(botaoTriangulo)
-                            .addComponent(botaoCirculo))
-                        .addGap(27, 27, 27)
-                        .addComponent(tipoTamanho)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botaoCm)
-                            .addComponent(botaoCm2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(digitaTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(forma)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tamanho)
@@ -315,33 +319,41 @@ public class FazerPedido extends javax.swing.JFrame {
                         .addComponent(sabor2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(preco)
-                        .addGap(77, 77, 77)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(saboresLista, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
                         .addComponent(addSabores)
-                        .addGap(29, 29, 29)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(_1Sabor)
-                    .addComponent(_2Sabores))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(82, 82, 82)
+                        .addComponent(confirmaPizza)
+                        .addGap(18, 51, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(defineSabor1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(defineSabor2)
-                        .addGap(10, 10, 10)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(digitaSabor1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(digitaSabor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(confirmaPizza)))
-                .addGap(18, 18, 18)
-                .addComponent(calculaPreco)
-                .addContainerGap(9, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botaoQuadrado)
+                            .addComponent(botaoTriangulo)
+                            .addComponent(botaoCirculo))
+                        .addGap(27, 27, 27)
+                        .addComponent(tipoTamanho)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botaoCm)
+                            .addComponent(botaoCm2))
+                        .addGap(18, 18, 18)
+                        .addComponent(digitaTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(saboresLista, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(_1Sabor)
+                            .addComponent(_2Sabores))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(defineSabor1)
+                            .addComponent(defineSabor2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(digitaSabor1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(digitaSabor2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(calculaPreco)
+                        .addGap(30, 30, 30))))
         );
 
         pack();
@@ -424,11 +436,11 @@ public class FazerPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_digitaTamanhoActionPerformed
 
     private void digitaSabor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitaSabor1ActionPerformed
-        for (int cont=0;cont<sabores.size();cont++){
-            if (digitaSabor1.getText().equalsIgnoreCase(sabores.get(cont).getNome())){
+        for (int cont=0;cont<datastore.getSabores().size();cont++){
+            if (digitaSabor1.getText().equalsIgnoreCase(datastore.getSabores().get(cont).getNome())){
                 validaSabor=true;
                 sabor1Cont = cont;
-                novaPizza.setSabor(0,sabores.get(cont));
+                novaPizza.setSabor(0,datastore.getSabores().get(cont));
                 break;
             }
         }
@@ -443,11 +455,11 @@ public class FazerPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_digitaSabor1ActionPerformed
 
     private void digitaSabor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitaSabor2ActionPerformed
-        for (int cont=0;cont<sabores.size();cont++){
-            if (digitaSabor2.getText().equalsIgnoreCase(sabores.get(cont).getNome())){
+        for (int cont=0;cont<datastore.getSabores().size();cont++){
+            if (digitaSabor2.getText().equalsIgnoreCase(datastore.getSabores().get(cont).getNome())){
                 sabor2Cont = cont;
                 validaSabor=true;
-                novaPizza.setSabor(1,sabores.get(cont));
+                novaPizza.setSabor(1,datastore.getSabores().get(cont));
                 break;
             }    
         }
@@ -483,12 +495,12 @@ public class FazerPedido extends javax.swing.JFrame {
     }//GEN-LAST:event__2SaboresActionPerformed
 
     private void addSaboresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSaboresActionPerformed
-        sabores.add(s1);
-        sabores.add(s2);
-        sabores.add(s3);
-        sabores.add(s4);
-        sabores.add(s5);
-        sabores.add(s6);
+        datastore.getSabores().add(s1);
+        datastore.getSabores().add(s2);
+        datastore.getSabores().add(s3);
+        datastore.getSabores().add(s4);
+        datastore.getSabores().add(s5);
+        datastore.getSabores().add(s6);
     }//GEN-LAST:event_addSaboresActionPerformed
 
     private void confirmaPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaPizzaActionPerformed
@@ -504,23 +516,23 @@ public class FazerPedido extends javax.swing.JFrame {
             
             if (tamanhoEmCm){
                 
-                precoFinal = (Double.parseDouble(tamanho.getText())/2) * sabores.get(sabor1Cont).getPreco();
-                precoFinal += (Double.parseDouble(tamanho.getText())/2) * sabores.get(sabor2Cont).getPreco();
+                precoFinal = (Double.parseDouble(tamanho.getText())/2) * datastore.getSabores().get(sabor1Cont).getPreco();
+                precoFinal += (Double.parseDouble(tamanho.getText())/2) * datastore.getSabores().get(sabor2Cont).getPreco();
             
             }
             else{
                 
-                precoFinal = (Double.parseDouble(digitaTamanho.getText())/2) * sabores.get(sabor1Cont).getPreco();
-                precoFinal += (Double.parseDouble(digitaTamanho.getText())/2) * sabores.get(sabor2Cont).getPreco();
+                precoFinal = (Double.parseDouble(digitaTamanho.getText())/2) * datastore.getSabores().get(sabor1Cont).getPreco();
+                precoFinal += (Double.parseDouble(digitaTamanho.getText())/2) * datastore.getSabores().get(sabor2Cont).getPreco();
             
             }
         }
         else if ((!"".equals(forma.getText())) && (!"".equals(tamanho.getText())) && ((!"".equals(sabor1.getText())) && ("".equals(sabor2.getText())))){
             if (tamanhoEmCm){
-                precoFinal = Double.parseDouble(tamanho.getText())* sabores.get(sabor1Cont).getPreco();
+                precoFinal = Double.parseDouble(tamanho.getText())* datastore.getSabores().get(sabor1Cont).getPreco();
             }
             else{               
-                precoFinal = Double.parseDouble(digitaTamanho.getText())* sabores.get(sabor1Cont).getPreco();
+                precoFinal = Double.parseDouble(digitaTamanho.getText())* datastore.getSabores().get(sabor1Cont).getPreco();
             }
         }
         else{
