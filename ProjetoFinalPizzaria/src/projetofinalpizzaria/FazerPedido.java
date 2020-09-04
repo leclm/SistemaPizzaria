@@ -49,9 +49,9 @@ public class FazerPedido extends javax.swing.JFrame {
         tamanho = new javax.swing.JLabel();
         sabor1 = new javax.swing.JLabel();
         sabor2 = new javax.swing.JLabel();
-        preco = new javax.swing.JLabel();
+        preço = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         escolheFormato.setText("Escolher o formato");
 
@@ -105,7 +105,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
-        botaoCirculo.setText("Circulo");
+        botaoCirculo.setText("Círculo");
         botaoCirculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCirculoActionPerformed(evt);
@@ -142,7 +142,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
-        calculaPreco.setText("Calcular preco");
+        calculaPreco.setText("Calcular preço");
         calculaPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 calculaPrecoActionPerformed(evt);
@@ -159,7 +159,7 @@ public class FazerPedido extends javax.swing.JFrame {
 
         sabor2.setText("Sabor 2");
 
-        preco.setText("Preco");
+        preço.setText("Preço");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -222,7 +222,7 @@ public class FazerPedido extends javax.swing.JFrame {
                         .addComponent(sabor1)
                         .addComponent(tamanho)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(preco)
+                            .addComponent(preço)
                             .addComponent(sabor2))))
                 .addGap(203, 203, 203))
         );
@@ -253,7 +253,7 @@ public class FazerPedido extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(definirTamanho)
-                    .addComponent(preco))
+                    .addComponent(preço))
                 .addGap(21, 21, 21)
                 .addComponent(digitaTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -339,9 +339,9 @@ public class FazerPedido extends javax.swing.JFrame {
         sabor2.setText(digitaSabor2.getText());
     }//GEN-LAST:event_digitaSabor2ActionPerformed
 
-    private void calculaPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculaPreçoActionPerformed
+    private void calculaPrecoActionPerformed(java.awt.event.ActionEvent evt) {                                             
         
-    }//GEN-LAST:event_calculaPrecoActionPerformed
+    }                                            
 
     /**
      * @param args the command line arguments
@@ -396,7 +396,7 @@ public class FazerPedido extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel listaSabores;
     private javax.swing.JLabel pizzaEscolhida;
-    private javax.swing.JLabel preco;
+    private javax.swing.JLabel preço;
     private javax.swing.JLabel sabor1;
     private javax.swing.JLabel sabor2;
     private javax.swing.JScrollPane sabores;
