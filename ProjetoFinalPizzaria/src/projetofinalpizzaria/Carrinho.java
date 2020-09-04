@@ -244,9 +244,6 @@ public class Carrinho extends javax.swing.JFrame {
             fazerPedido.setVisible(true);
             fazerPedido.setResizable(false);
         }
-        else {
-            mensagemErro.setText("O pedido já está a caminho");
-        }
     }//GEN-LAST:event_alterarPizzaActionPerformed
 
     private void addPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPizzaActionPerformed
@@ -256,13 +253,13 @@ public class Carrinho extends javax.swing.JFrame {
             fazerPedido.setVisible(true);
             fazerPedido.setResizable(false);
         }
-        else {
-            mensagemErro.setText("O pedido já está a caminho");
-        }
     }//GEN-LAST:event_addPizzaActionPerformed
 
     private void botaoACaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoACaminhoActionPerformed
-        status = "A caminho"; 
+        status = "A caminho";
+        mensagemErro.setText("O pedido já está a caminho");
+        alterarPizza.setVisible(false);
+        addPizza.setVisible(false);
     }//GEN-LAST:event_botaoACaminhoActionPerformed
 
     private void botaoEntregueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntregueActionPerformed
