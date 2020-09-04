@@ -22,6 +22,10 @@ public class FazerPedido extends javax.swing.JFrame {
         informaPizza = pizzas;
     }
     
+    public FazerPedido() {
+        initComponents();
+    }
+    
     Quadrado q = new Quadrado();
     Triangulo t = new Triangulo();
     Circulo c = new Circulo();
