@@ -35,4 +35,14 @@ public final class Datastore {
         }
         return false;
     }
+    
+    public boolean pedidoAberto(String tel) {
+        for (int i = 0; i < clientes.size(); i++){
+            if (tel.equals(clientes.get(i).getTelefone())) {
+               System.out.println(i);
+               return clientes.get(i).temPedidoAberto();
+            } 
+        }
+        return false;
+    }
 }
