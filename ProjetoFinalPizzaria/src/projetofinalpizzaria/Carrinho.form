@@ -64,9 +64,10 @@
                       <Component id="sabor1" max="32767" attributes="0"/>
                       <Component id="numSabores" max="32767" attributes="0"/>
                       <Component id="tamanhoCm2" max="32767" attributes="0"/>
-                      <Component id="tamanhoCm" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="tamanhoCm" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
                   <Component id="formato" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="pizzaVerificada" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
           </Group>
@@ -90,55 +91,51 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Component id="formato" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Component id="recebePizza" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="sabor1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sabor2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="alterarPizza" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="preco" min="-2" max="-2" attributes="0"/>
-                          <Component id="addPizza" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="alterarPizza" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
+                      <Component id="mensagem" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tamanhoCm" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="mensagem" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tamanhoCm2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="numPizzas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pizzaVerificada" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="numSabores" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="mensagemErro" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="formato" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="mensagemErro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tamanhoCm" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="tamanhoCm2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="numSabores" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="addPizza" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="sabor1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="sabor2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="preco" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Component id="mensagemPreco" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="precoTotal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="59" max="32767" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botaoACaminho" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botaoEntregue" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -242,6 +239,11 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="mensagemErro">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=" "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="pizzaVerificada">
       <Properties>
         <Property name="text" type="java.lang.String" value=" "/>
       </Properties>
