@@ -5,6 +5,7 @@
  */
 package CadastroSabores;
 
+import interfacesSistema.Datastore;
 import java.util.ArrayList;
 import projetofinalpizzaria.Cliente;
 import projetofinalpizzaria.Sabor;
@@ -14,11 +15,15 @@ import projetofinalpizzaria.Sabor;
  * @author mathe
  */
 public class TelaSabores extends javax.swing.JFrame {
-
+    Datastore datastore = Datastore.getInstance(); // com isso conseguimos usar todas as coisas que tem na classe Datastore, inclusive os arraylists
+    
+    public void mostrarSabores() {
+        System.out.println(datastore.getSabores());
+    }
+    
     private double simples;
     private double especial;
     private double premium;
-    private ArrayList<Sabor> sabores = new ArrayList<>();
     private long idContador = 0;
     /**
      * Creates new form TelaSabores
@@ -36,7 +41,7 @@ public class TelaSabores extends javax.swing.JFrame {
         this.especial = especial;
         this.premium = premium;
         
-        sabores.forEach(sabor -> {
+        datastore.getSabores().forEach(sabor -> {
             int tipo = sabor.getTipo();
             sabor.setPreco((tipo == 0 ? simples : ( tipo == 1 ? especial : premium )));
         });
@@ -44,7 +49,7 @@ public class TelaSabores extends javax.swing.JFrame {
     }
 
     public ArrayList<Sabor> getSabores() {
-        return sabores;
+        return datastore.getSabores();
     }
     
     public void cadastrar() {
@@ -63,7 +68,7 @@ public class TelaSabores extends javax.swing.JFrame {
         }
 
         Sabor sabor = new Sabor(idContador++, tipo, nome, preco);
-        sabores.add(sabor);
+        datastore.getSabores().add(sabor);
         atualizaTabela();
     }
     
@@ -76,14 +81,14 @@ public class TelaSabores extends javax.swing.JFrame {
             return;
         }
         
-        if(sabores.isEmpty()){
+        if(datastore.getSabores().isEmpty()){
             labelTextError.setText("Não há sabores cadastrados.");
             return;
         }
         
         int index = -1;
-        for(int i =0; i < sabores.size(); i++){
-            if(sabores.get(i).getId() == id)
+        for(int i =0; i < datastore.getSabores().size(); i++){
+            if(datastore.getSabores().get(i).getId() == id)
                 index = i;
         } 
         
@@ -92,7 +97,7 @@ public class TelaSabores extends javax.swing.JFrame {
             return;
         }
         
-        sabores.remove(index);
+        datastore.getSabores().remove(index);
         atualizaTabela();
     }
     
@@ -108,7 +113,7 @@ public class TelaSabores extends javax.swing.JFrame {
             return;
         }
         
-        if(sabores.isEmpty()){
+        if(datastore.getSabores().isEmpty()){
             labelTextError.setText("Não há sabores cadastrados.");
             return;
         }
@@ -127,8 +132,8 @@ public class TelaSabores extends javax.swing.JFrame {
         
         int index = -1;
         
-        for(int i =0; i < sabores.size(); i++){
-            if(sabores.get(i).getId() == id)
+        for(int i =0; i < datastore.getSabores().size(); i++){
+            if(datastore.getSabores().get(i).getId() == id)
                 index = i;
         }        
         
@@ -137,13 +142,13 @@ public class TelaSabores extends javax.swing.JFrame {
             return;
         }
         
-        sabores.get(index).setSabor(sabor);
+        datastore.getSabores().get(index).setSabor(sabor);
         
         atualizaTabela();
     }
     
     private void atualizaTabela(){
-        tabelaSabores.getModeloTabela().setListaSabores(sabores);
+        tabelaSabores.getModeloTabela().setListaSabores(datastore.getSabores());
     }
 
     /**

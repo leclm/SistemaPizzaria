@@ -7,6 +7,8 @@ package interfacesSistema;
 
 import java.util.ArrayList;
 import projetofinalpizzaria.Cliente;
+import projetofinalpizzaria.Pizza;
+import projetofinalpizzaria.Sabor;
 
 /**
  *
@@ -14,7 +16,10 @@ import projetofinalpizzaria.Cliente;
  */
 public final class Datastore {
     private static final Datastore DATA = new Datastore();
+    
     private ArrayList<Cliente> clientes = new ArrayList<>();
+       
+    private ArrayList<Sabor> sabores = new ArrayList<>(); // criando o arraylist sabores aqui e tirando do TelaSabores
     
     public static Datastore getInstance() {
         return DATA;
@@ -22,6 +27,10 @@ public final class Datastore {
 
     public ArrayList<Cliente> getClientes() {
         return clientes;
+    }
+    
+    public ArrayList<Sabor> getSabores() { // metodo pra pegar os sabores do arraylist sabores
+        return sabores;
     }
     
     public boolean buscarPorTelefone(String tel) {
