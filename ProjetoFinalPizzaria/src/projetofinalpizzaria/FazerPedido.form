@@ -74,11 +74,13 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="numSabores" min="-2" max="-2" attributes="0"/>
-                          <Component id="tamanho" min="-2" max="-2" attributes="0"/>
-                          <Component id="forma" min="-2" pref="58" max="-2" attributes="0"/>
                           <Component id="sabor1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="sabor2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="preco" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="tamanho" alignment="0" max="32767" attributes="0"/>
+                              <Component id="forma" alignment="0" pref="58" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                   </Group>
@@ -316,27 +318,27 @@
     </Component>
     <Component class="javax.swing.JLabel" name="forma">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Formato"/>
+        <Property name="text" type="java.lang.String" value=" "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="tamanho">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tamanho"/>
+        <Property name="text" type="java.lang.String" value=" "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="sabor1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sabor 1"/>
+        <Property name="text" type="java.lang.String" value=" "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="sabor2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sabor 2"/>
+        <Property name="text" type="java.lang.String" value=" "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="preco">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pre&#xe7;o"/>
+        <Property name="text" type="java.lang.String" value=" "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="_1Sabor">
@@ -373,7 +375,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="numSabores">
       <Properties>
-        <Property name="text" type="java.lang.String" value="NumSabores"/>
+        <Property name="text" type="java.lang.String" value=" "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="mensagemErro">

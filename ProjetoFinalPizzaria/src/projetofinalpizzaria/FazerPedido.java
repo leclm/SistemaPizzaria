@@ -17,9 +17,11 @@ public class FazerPedido extends javax.swing.JFrame {
     /**
      * Creates new form FazerPedido
      */
-    public FazerPedido(ArrayList<Pizza> pizzas) {
+    public FazerPedido(ArrayList<Pizza> pizzas /*, ArrayList<Sabor> recebeSabores*/) {
         initComponents();
         informaPizza = pizzas;
+        digitaTamanho.setVisible(false);
+        //sabores = recebeSabores;
     }
     
     Quadrado q = new Quadrado();
@@ -151,15 +153,15 @@ public class FazerPedido extends javax.swing.JFrame {
 
         pizzaEscolhida.setText("Dados da pizza");
 
-        forma.setText("Formato");
+        forma.setText(" ");
 
-        tamanho.setText("Tamanho");
+        tamanho.setText(" ");
 
-        sabor1.setText("Sabor 1");
+        sabor1.setText(" ");
 
-        sabor2.setText("Sabor 2");
+        sabor2.setText(" ");
 
-        preco.setText("Preço");
+        preco.setText(" ");
 
         _1Sabor.setText("1 Sabor");
         _1Sabor.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +191,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
-        numSabores.setText("NumSabores");
+        numSabores.setText(" ");
 
         mensagemErro.setForeground(new java.awt.Color(255, 0, 0));
         mensagemErro.setText(" ");
@@ -238,11 +240,12 @@ public class FazerPedido extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(numSabores)
-                            .addComponent(tamanho)
-                            .addComponent(forma, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sabor1)
                             .addComponent(sabor2)
-                            .addComponent(preco))
+                            .addComponent(preco)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tamanho, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(forma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)))
                         .addGap(78, 78, 78))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -356,17 +359,17 @@ public class FazerPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCirculoActionPerformed
 
     private void botaoCmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCmActionPerformed
+        digitaTamanho.setVisible(true);
         digitaTamanho.setText("");
         tamanho.setText("Tamanho");
         tamanhoEmCm=true;
-        digitaTamanho.setVisible(true);
     }//GEN-LAST:event_botaoCmActionPerformed
 
     private void botaoCm2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCm2ActionPerformed
+        digitaTamanho.setVisible(true);
         digitaTamanho.setText("");
         tamanho.setText("Tamanho");
         tamanhoEmCm=false;
-        digitaTamanho.setVisible(true);
     }//GEN-LAST:event_botaoCm2ActionPerformed
 
     private void digitaTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitaTamanhoActionPerformed
