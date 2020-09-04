@@ -44,7 +44,7 @@ public class FazerPedido extends javax.swing.JFrame {
     int sabor2Cont;
     double precoFinal;
     boolean tamanhoEmCm;
-   
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -359,12 +359,14 @@ public class FazerPedido extends javax.swing.JFrame {
         digitaTamanho.setText("");
         tamanho.setText("Tamanho");
         tamanhoEmCm=true;
+        digitaTamanho.setVisible(true);
     }//GEN-LAST:event_botaoCmActionPerformed
 
     private void botaoCm2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCm2ActionPerformed
         digitaTamanho.setText("");
         tamanho.setText("Tamanho");
         tamanhoEmCm=false;
+        digitaTamanho.setVisible(true);
     }//GEN-LAST:event_botaoCm2ActionPerformed
 
     private void digitaTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitaTamanhoActionPerformed
@@ -425,6 +427,7 @@ public class FazerPedido extends javax.swing.JFrame {
         }
         if (validaSabor){
             sabor1.setText(digitaSabor1.getText());
+            mensagemErro.setText(" ");
         }
         else{
             mensagemErro.setText("O sabor nao existe");
@@ -443,6 +446,7 @@ public class FazerPedido extends javax.swing.JFrame {
         }
         if (validaSabor){
             sabor2.setText(digitaSabor2.getText());
+            mensagemErro.setText(" ");
         }
         else{
             mensagemErro.setText("O sabor nao existe");
@@ -551,6 +555,7 @@ public class FazerPedido extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FazerPedido(informaPizza).setVisible(true);
+                
             }
         });
     }
