@@ -160,7 +160,7 @@ public class TelaSabores extends javax.swing.JFrame {
         inputSabores = new CadastroSabores.inputSabores();
         labelTextError = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelTextError.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelTextError.setForeground(new java.awt.Color(255, 0, 0));

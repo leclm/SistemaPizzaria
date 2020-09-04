@@ -24,6 +24,10 @@ public class FazerPedido extends javax.swing.JFrame {
         //sabores = recebeSabores;
     }
     
+    public FazerPedido() {
+        initComponents();
+    }
+    
     Quadrado q = new Quadrado();
     Triangulo t = new Triangulo();
     Circulo c = new Circulo();
@@ -79,7 +83,7 @@ public class FazerPedido extends javax.swing.JFrame {
         numSabores = new javax.swing.JLabel();
         mensagemErro = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         escolheFormato.setText("Escolher o formato");
 
