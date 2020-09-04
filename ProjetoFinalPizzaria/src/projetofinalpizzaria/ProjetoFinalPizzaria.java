@@ -7,7 +7,7 @@ package projetofinalpizzaria;
 
 import CadastroSabores.TelaSabores;
 import java.util.ArrayList;
-import interfaceAlterarPedido.JanelaAlterarPedidoAntigo;
+
 import interfacesSistema.JanelaCadastroCliente;
 
 /**
@@ -21,20 +21,18 @@ public class ProjetoFinalPizzaria {
      */
     public static void main(String[] args) {
         TelaSabores sabores = new TelaSabores();
+        
         sabores.setVisible(true);
-        
-        JanelaCadastroCliente cadastro = new JanelaCadastroCliente();
-        cadastro.setVisible(true);
-        
-        JanelaAlterarPedidoAntigo alterar = new JanelaAlterarPedidoAntigo();
-        alterar.setVisible(true);
-        
-        
        
         //Pizza p = new Pizza(q, "premium");
         //p.setArea(q.getArea());
         //System.out.println("A area da pizza escolhida é: " + p.getArea());
         
     }
+    
+    /*public static void main(String[] args) {
+        ArrayList<Sabores> arraySabores = new ArrayList();
+        TelaSabores sabores = new TelaSabores(arraySabores);
+    }*/
     
 }

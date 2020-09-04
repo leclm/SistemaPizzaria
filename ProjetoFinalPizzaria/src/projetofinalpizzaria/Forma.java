@@ -8,18 +8,19 @@ public abstract class Forma {
     private double tamcm;
     private double tamcm2;
     private ArrayList<Sabor> sabor;
+    private String formato;
     
     public Forma() {
         this.sabor = new ArrayList();
     }
     
-    public void setPizza(ArrayList<Sabor> sabor, double tamcm, double tamcm2){
+    public void setPizza(ArrayList<Sabor> sabor){
         this.sabor.clear();
         sabor.forEach(sabor1 -> {
             this.sabor.add(sabor1);
         });
-        calTamcm(tamcm2);
-        this.tamcm2 = tamcm2;
+        //calTamcm(tamcm2);
+        //this.tamcm2 = tamcm2;
         doisSabores = sabor.size() == 2;
         setPrecoTotal();
     }
@@ -68,5 +69,21 @@ public abstract class Forma {
 
     public double getPrecoTotal() {
         return precoTotal;
+    }
+    
+    public void setFormato(String formato){
+        this.formato=formato;
+    }
+    
+    public String getFormato(){
+        return formato;
+    }
+    
+    public void setDoisSabores(boolean doisSabores){
+        this.doisSabores=doisSabores;
+    }
+    
+    public boolean getDoisSabores(){
+        return doisSabores;
     }
 }

@@ -5,6 +5,9 @@
  */
 package projetofinalpizzaria;
 
+import CadastroSabores.TelaSabores;
+import java.util.ArrayList;
+
 /**
  *
  * @author enzoradel
@@ -14,14 +17,33 @@ public class FazerPedido extends javax.swing.JFrame {
     /**
      * Creates new form FazerPedido
      */
-    public FazerPedido() {
+    public FazerPedido(ArrayList<Pizza> pizzas) {
         initComponents();
+        informaPizza = pizzas;
     }
-
+    
     Quadrado q = new Quadrado();
     Triangulo t = new Triangulo();
     Circulo c = new Circulo();
-    Forma pizza;
+    Pizza novaPizza = new Pizza();
+    
+    Sabor s1 = new Sabor(0,0,"Mussarela",0.03);
+    Sabor s2 = new Sabor(1,0,"Calabresa",0.03);
+    Sabor s3 = new Sabor(2,1,"Marguerita",0.04);
+    Sabor s4 = new Sabor(3,1,"Escarola",0.04);
+    Sabor s5 = new Sabor(4,2,"Da casa",0.05);
+    Sabor s6 = new Sabor(5,2,"Completa",0.05);
+    
+    private static ArrayList<Pizza> informaPizza = new ArrayList<>();
+    
+    private ArrayList<Sabor> sabores = new ArrayList<>();
+    
+    boolean validaSabor;
+    
+    int sabor1Cont;
+    int sabor2Cont;
+    double precoFinal;
+    boolean tamanhoEmCm;
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -30,10 +52,8 @@ public class FazerPedido extends javax.swing.JFrame {
         escolheFormato = new javax.swing.JLabel();
         tipoTamanho = new javax.swing.JLabel();
         digitaTamanho = new javax.swing.JTextField();
-        definirTamanho = new javax.swing.JLabel();
-        sabores = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        listaSabores = new javax.swing.JLabel();
+        saboresLista = new javax.swing.JScrollPane();
+        listaSabores = new javax.swing.JTable();
         botaoQuadrado = new javax.swing.JButton();
         botaoTriangulo = new javax.swing.JButton();
         botaoCirculo = new javax.swing.JButton();
@@ -45,17 +65,27 @@ public class FazerPedido extends javax.swing.JFrame {
         digitaSabor2 = new javax.swing.JTextField();
         calculaPreco = new javax.swing.JButton();
         pizzaEscolhida = new javax.swing.JLabel();
-        formato = new javax.swing.JLabel();
+        forma = new javax.swing.JLabel();
         tamanho = new javax.swing.JLabel();
         sabor1 = new javax.swing.JLabel();
         sabor2 = new javax.swing.JLabel();
+<<<<<<< HEAD
         preço = new javax.swing.JLabel();
+=======
+        preco = new javax.swing.JLabel();
+        _1Sabor = new javax.swing.JButton();
+        _2Sabores = new javax.swing.JButton();
+        addSabores = new javax.swing.JButton();
+        confirmaPizza = new javax.swing.JButton();
+        numSabores = new javax.swing.JLabel();
+        mensagemErro = new javax.swing.JLabel();
+>>>>>>> b1ad5273015099a8973efe8f5244cf99e1da07fd
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         escolheFormato.setText("Escolher o formato");
 
-        tipoTamanho.setText("Definir tipo de tamanho");
+        tipoTamanho.setText("Tamanho");
 
         digitaTamanho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,33 +93,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
-        definirTamanho.setText("Definir tamanho");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Mussarela", "Marguerita", "Da casa"},
-                {"Calabresa", "Escarola", "Completa"}
-            },
-            new String [] {
-                "Simples", "Especiais", "Premium"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        sabores.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-        }
-
-        listaSabores.setText("Lista de sabores");
+        saboresLista.setViewportView(listaSabores);
 
         botaoQuadrado.setText("Quadrado");
         botaoQuadrado.addActionListener(new java.awt.event.ActionListener() {
@@ -149,9 +153,9 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
-        pizzaEscolhida.setText("Pizza escolhida");
+        pizzaEscolhida.setText("Dados da pizza");
 
-        formato.setText("Formato");
+        forma.setText("Formato");
 
         tamanho.setText("Tamanho");
 
@@ -159,72 +163,127 @@ public class FazerPedido extends javax.swing.JFrame {
 
         sabor2.setText("Sabor 2");
 
+<<<<<<< HEAD
         preço.setText("Preço");
+=======
+        preco.setText("Preço");
+
+        _1Sabor.setText("1 Sabor");
+        _1Sabor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _1SaborActionPerformed(evt);
+            }
+        });
+
+        _2Sabores.setText("2 Sabores");
+        _2Sabores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _2SaboresActionPerformed(evt);
+            }
+        });
+
+        addSabores.setText("Adicionar Sabores");
+        addSabores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSaboresActionPerformed(evt);
+            }
+        });
+
+        confirmaPizza.setText("Confirmar pizza");
+        confirmaPizza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmaPizzaActionPerformed(evt);
+            }
+        });
+
+        numSabores.setText("NumSabores");
+
+        mensagemErro.setForeground(new java.awt.Color(255, 0, 0));
+        mensagemErro.setText(" ");
+>>>>>>> b1ad5273015099a8973efe8f5244cf99e1da07fd
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(_1Sabor)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(saboresLista, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(botaoCm)
+                                    .addGap(50, 50, 50)
+                                    .addComponent(botaoCm2)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
                         .addComponent(defineSabor1)
-                        .addGap(82, 82, 82)
+                        .addGap(75, 75, 75)
                         .addComponent(defineSabor2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(calculaPreco)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(110, 110, 110)
+                        .addComponent(digitaTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botaoCm)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botaoCm2))
-                            .addComponent(sabores, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(digitaSabor1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(digitaSabor2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(listaSabores)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(digitaTamanho))
-                                .addComponent(definirTamanho))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tipoTamanho)
+                            .addComponent(escolheFormato)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(botaoQuadrado)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botaoTriangulo)))
-                        .addGap(18, 18, 18)
-                        .addComponent(botaoCirculo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(escolheFormato)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botaoTriangulo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tipoTamanho)
+                                .addGap(38, 38, 38)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botaoCirculo)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(formato, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pizzaEscolhida)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(sabor1)
-                        .addComponent(tamanho)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(mensagemErro, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numSabores)
+                            .addComponent(tamanho)
+                            .addComponent(forma, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sabor1)
+                            .addComponent(sabor2)
+                            .addComponent(preco))
+                        .addGap(78, 78, 78))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
                             .addComponent(preço)
                             .addComponent(sabor2))))
                 .addGap(203, 203, 203))
+=======
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(pizzaEscolhida)
+                                .addGap(78, 78, 78))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(confirmaPizza)
+                                    .addComponent(addSabores))
+                                .addGap(178, 178, 178))))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(_2Sabores))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(calculaPreco)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(digitaSabor1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(digitaSabor2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(555, 555, 555))
+>>>>>>> b1ad5273015099a8973efe8f5244cf99e1da07fd
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,23 +293,48 @@ public class FazerPedido extends javax.swing.JFrame {
                     .addComponent(escolheFormato)
                     .addComponent(pizzaEscolhida))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(formato)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botaoQuadrado)
+                            .addComponent(botaoTriangulo)
+                            .addComponent(botaoCirculo))
+                        .addGap(27, 27, 27)
+                        .addComponent(tipoTamanho)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botaoCm)
+                            .addComponent(botaoCm2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(digitaTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(forma)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tamanho)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(numSabores)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sabor1)
+                            .addComponent(mensagemErro))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sabor2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(preco)
+                        .addGap(77, 77, 77)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(saboresLista, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(addSabores)
+                        .addGap(29, 29, 29)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoQuadrado)
-                    .addComponent(botaoTriangulo)
-                    .addComponent(botaoCirculo)
-                    .addComponent(tamanho))
+                    .addComponent(_1Sabor)
+                    .addComponent(_2Sabores))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipoTamanho)
-                    .addComponent(sabor1))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoCm)
-                    .addComponent(botaoCm2)
-                    .addComponent(sabor2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(definirTamanho)
                     .addComponent(preço))
@@ -268,80 +352,217 @@ public class FazerPedido extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(digitaSabor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(digitaSabor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(defineSabor1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(defineSabor2)
+                        .addGap(10, 10, 10)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(digitaSabor1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(digitaSabor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(confirmaPizza)))
+>>>>>>> b1ad5273015099a8973efe8f5244cf99e1da07fd
                 .addGap(18, 18, 18)
                 .addComponent(calculaPreco)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoQuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoQuadradoActionPerformed
-        formato.setText("Quadrado");
+        forma.setText("Quadrado");
+        novaPizza.setFormato("Quadrado");
     }//GEN-LAST:event_botaoQuadradoActionPerformed
 
     private void botaoTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoTrianguloActionPerformed
-        formato.setText("Triangulo");
+        forma.setText("Triangulo");
+        novaPizza.setFormato("Triangulo");
     }//GEN-LAST:event_botaoTrianguloActionPerformed
 
     private void botaoCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCirculoActionPerformed
-        formato.setText("Circulo");
+        forma.setText("Circulo");
+        novaPizza.setFormato("Circulo");
     }//GEN-LAST:event_botaoCirculoActionPerformed
 
     private void botaoCmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCmActionPerformed
-        definirTamanho.setText("Tamanho em Cm");
+        digitaTamanho.setText("");
+        tamanho.setText("Tamanho");
+        tamanhoEmCm=true;
+        digitaTamanho.setVisible(true);
     }//GEN-LAST:event_botaoCmActionPerformed
 
     private void botaoCm2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCm2ActionPerformed
-        definirTamanho.setText("Tamanho em Cm2");
+        digitaTamanho.setText("");
+        tamanho.setText("Tamanho");
+        tamanhoEmCm=false;
+        digitaTamanho.setVisible(true);
     }//GEN-LAST:event_botaoCm2ActionPerformed
 
     private void digitaTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitaTamanhoActionPerformed
-        switch (formato.getText()){
+        switch (forma.getText()){
             case ("Quadrado"):
-                if (definirTamanho.getText() == "Tamanho em Cm"){
+                if (tamanhoEmCm){
                     q.calTamcm2(Double.parseDouble(digitaTamanho.getText()));
                     tamanho.setText(String.valueOf(q.getTamcm2()));
+                    novaPizza.setTamanhoCm(Double.parseDouble(digitaTamanho.getText()));
+                    novaPizza.setTamanhoCm2(q.getTamcm2());
                 }
                 else{
                     q.calTamcm(Double.parseDouble(digitaTamanho.getText()));
                     tamanho.setText(String.valueOf(q.getTamcm()));
+                    novaPizza.setTamanhoCm2(Double.parseDouble(digitaTamanho.getText()));
+                    novaPizza.setTamanhoCm(q.getTamcm());
                 }
                 break;
-            case ("Triângulo"):
-                if (definirTamanho.getText() == "Tamanho em Cm"){
+            case ("Triangulo"):
+                if (tamanhoEmCm){
                     t.calTamcm2(Double.parseDouble(digitaTamanho.getText()));
                     tamanho.setText(String.valueOf(t.getTamcm2()));
+                    novaPizza.setTamanhoCm(Double.parseDouble(digitaTamanho.getText()));
+                    novaPizza.setTamanhoCm2(t.getTamcm2());
                 }
                 else{
                     t.calTamcm(Double.parseDouble(digitaTamanho.getText()));
                     tamanho.setText(String.valueOf(t.getTamcm()));
+                    novaPizza.setTamanhoCm2(Double.parseDouble(digitaTamanho.getText()));
+                    novaPizza.setTamanhoCm(t.getTamcm());
                 }
                 break;
-            case ("Círculo"):
-                if (definirTamanho.getText() == "Tamanho em Cm"){
+            case ("Circulo"):
+                if (tamanhoEmCm){
                     c.calTamcm2(Double.parseDouble(digitaTamanho.getText()));
                     tamanho.setText(String.valueOf(c.getTamcm2()));
+                    novaPizza.setTamanhoCm(Double.parseDouble(digitaTamanho.getText()));
+                    novaPizza.setTamanhoCm2(c.getTamcm2());
                 }
                 else{
                     c.calTamcm(Double.parseDouble(digitaTamanho.getText()));
                     tamanho.setText(String.valueOf(c.getTamcm()));
+                    novaPizza.setTamanhoCm2(Double.parseDouble(digitaTamanho.getText()));
+                    novaPizza.setTamanhoCm(c.getTamcm());
                 }
                 break;  
         }
     }//GEN-LAST:event_digitaTamanhoActionPerformed
 
     private void digitaSabor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitaSabor1ActionPerformed
-        sabor1.setText(digitaSabor1.getText());
+        for (int cont=0;cont<sabores.size();cont++){
+            if (digitaSabor1.getText().equalsIgnoreCase(sabores.get(cont).getNome())){
+                validaSabor=true;
+                sabor1Cont = cont;
+                novaPizza.setSabor(0,sabores.get(cont));
+                break;
+            }
+        }
+        if (validaSabor){
+            sabor1.setText(digitaSabor1.getText());
+            mensagemErro.setText(" ");
+        }
+        else{
+            mensagemErro.setText("O sabor nao existe");
+        }
+        validaSabor=false;        
     }//GEN-LAST:event_digitaSabor1ActionPerformed
 
     private void digitaSabor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitaSabor2ActionPerformed
-        sabor2.setText(digitaSabor2.getText());
+        for (int cont=0;cont<sabores.size();cont++){
+            if (digitaSabor2.getText().equalsIgnoreCase(sabores.get(cont).getNome())){
+                sabor2Cont = cont;
+                validaSabor=true;
+                novaPizza.setSabor(1,sabores.get(cont));
+                break;
+            }    
+        }
+        if (validaSabor){
+            sabor2.setText(digitaSabor2.getText());
+            mensagemErro.setText(" ");
+        }
+        else{
+            mensagemErro.setText("O sabor nao existe");
+        }
+        validaSabor=false;       
     }//GEN-LAST:event_digitaSabor2ActionPerformed
 
+<<<<<<< HEAD
     private void calculaPrecoActionPerformed(java.awt.event.ActionEvent evt) {                                             
         
     }                                            
+=======
+    private void _1SaborActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__1SaborActionPerformed
+        sabor2.setText("Sabor 2");
+        sabor1.setText("Sabor");
+        digitaSabor2.setVisible(false);
+        defineSabor2.setVisible(false);
+        sabor2.setVisible(false);
+        defineSabor1.setText("Sabor");
+        novaPizza.setDoisSabores(false);
+        numSabores.setText("1 sabor");
+    }//GEN-LAST:event__1SaborActionPerformed
+
+    private void _2SaboresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__2SaboresActionPerformed
+        sabor1.setText("Sabor 1");
+        digitaSabor2.setVisible(true);
+        defineSabor2.setVisible(true);
+        sabor2.setVisible(true);
+        defineSabor1.setText("Sabor 1");
+        novaPizza.setDoisSabores(true);
+        numSabores.setText("2 sabores");
+    }//GEN-LAST:event__2SaboresActionPerformed
+
+    private void addSaboresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSaboresActionPerformed
+        sabores.add(s1);
+        sabores.add(s2);
+        sabores.add(s3);
+        sabores.add(s4);
+        sabores.add(s5);
+        sabores.add(s6);
+    }//GEN-LAST:event_addSaboresActionPerformed
+
+    private void confirmaPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaPizzaActionPerformed
+        this.setVisible(false);
+        informaPizza.add(novaPizza);
+        Carrinho carrinho = new Carrinho(informaPizza);
+        carrinho.setVisible(true);
+        carrinho.setResizable(false);       
+    }//GEN-LAST:event_confirmaPizzaActionPerformed
+
+    private void calculaPrecoActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        if ((!"".equals(forma.getText())) && (!"".equals(tamanho.getText())) && (!"".equals(sabor1.getText())) && (!"".equals(sabor2.getText()))){
+            
+            if (tamanhoEmCm){
+                
+                precoFinal = (Double.parseDouble(tamanho.getText())/2) * sabores.get(sabor1Cont).getPreco();
+                precoFinal += (Double.parseDouble(tamanho.getText())/2) * sabores.get(sabor2Cont).getPreco();
+            
+            }
+            else{
+                
+                precoFinal = (Double.parseDouble(digitaTamanho.getText())/2) * sabores.get(sabor1Cont).getPreco();
+                precoFinal += (Double.parseDouble(digitaTamanho.getText())/2) * sabores.get(sabor2Cont).getPreco();
+            
+            }
+        }
+        else if ((!"".equals(forma.getText())) && (!"".equals(tamanho.getText())) && ((!"".equals(sabor1.getText())) && ("".equals(sabor2.getText())))){
+            if (tamanhoEmCm){
+                precoFinal = Double.parseDouble(tamanho.getText())* sabores.get(sabor1Cont).getPreco();
+            }
+            else{               
+                precoFinal = Double.parseDouble(digitaTamanho.getText())* sabores.get(sabor1Cont).getPreco();
+            }
+        }
+        else{
+            preco.setText("Algumas das informacoes nao foi preenchida corretamente");
+        }
+        preco.setText(String.valueOf(precoFinal));
+        novaPizza.setPrecoFinal(precoFinal);
+    }
+    
+>>>>>>> b1ad5273015099a8973efe8f5244cf99e1da07fd
 
     /**
      * @param args the command line arguments
@@ -373,34 +594,40 @@ public class FazerPedido extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FazerPedido().setVisible(true);
+                new FazerPedido(informaPizza).setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton _1Sabor;
+    private javax.swing.JButton _2Sabores;
+    private javax.swing.JButton addSabores;
     private javax.swing.JButton botaoCirculo;
     private javax.swing.JButton botaoCm;
     private javax.swing.JButton botaoCm2;
     private javax.swing.JButton botaoQuadrado;
     private javax.swing.JButton botaoTriangulo;
     private javax.swing.JButton calculaPreco;
+    private javax.swing.JButton confirmaPizza;
     private javax.swing.JLabel defineSabor1;
     private javax.swing.JLabel defineSabor2;
-    private javax.swing.JLabel definirTamanho;
     private javax.swing.JTextField digitaSabor1;
     private javax.swing.JTextField digitaSabor2;
     private javax.swing.JTextField digitaTamanho;
     private javax.swing.JLabel escolheFormato;
-    private javax.swing.JLabel formato;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel listaSabores;
+    private javax.swing.JLabel forma;
+    private javax.swing.JTable listaSabores;
+    private javax.swing.JLabel mensagemErro;
+    private javax.swing.JLabel numSabores;
     private javax.swing.JLabel pizzaEscolhida;
     private javax.swing.JLabel preço;
     private javax.swing.JLabel sabor1;
     private javax.swing.JLabel sabor2;
-    private javax.swing.JScrollPane sabores;
+    private javax.swing.JScrollPane saboresLista;
     private javax.swing.JLabel tamanho;
     private javax.swing.JLabel tipoTamanho;
     // End of variables declaration//GEN-END:variables
+
 }
