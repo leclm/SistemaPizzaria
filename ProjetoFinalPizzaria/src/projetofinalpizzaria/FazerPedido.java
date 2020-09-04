@@ -17,10 +17,11 @@ public class FazerPedido extends javax.swing.JFrame {
     /**
      * Creates new form FazerPedido
      */
-    public FazerPedido() {
+    public FazerPedido(ArrayList<Pizza> pizzas) {
         initComponents();
+        informaPizza = pizzas;
     }
-
+    
     Quadrado q = new Quadrado();
     Triangulo t = new Triangulo();
     Circulo c = new Circulo();
@@ -32,6 +33,9 @@ public class FazerPedido extends javax.swing.JFrame {
     Sabor s4 = new Sabor(3,1,"Escarola",0.04);
     Sabor s5 = new Sabor(4,2,"Da casa",0.05);
     Sabor s6 = new Sabor(5,2,"Completa",0.05);
+    
+    private static ArrayList<Pizza> informaPizza = new ArrayList<>();
+    //private ArrayList<Pizza> teste = new ArrayList<>();
     
     private ArrayList<Sabor> sabores = new ArrayList<>();
     
@@ -475,7 +479,32 @@ public class FazerPedido extends javax.swing.JFrame {
 
     private void confirmaPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaPizzaActionPerformed
         this.setVisible(false);
-        new ItensPedido().setVisible(true);
+        informaPizza.add(novaPizza);
+        Carrinho carrinho = new Carrinho(informaPizza);
+        carrinho.setVisible(true);
+        carrinho.setResizable(false);
+        /*if (itensPedido == null){
+            System.out.println("null");
+            itensPedido = new Carrinho(novaPizza);
+            itensPedido.setLocationRelativeTo(null);
+            itensPedido.setVisible(true);
+            itensPedido.setResizable(false);
+        } else {
+            System.out.println("nao null");
+            itensPedido.setLocationRelativeTo(null);
+            itensPedido.setVisible(true);
+            itensPedido.setResizable(false);
+        }*/
+        /*if (telaCriada){
+            itensPedido.setVisible(true);
+            itensPedido.setResizable(false);
+        }
+        else{
+            ItensPedido itensPedido = new ItensPedido(novaPizza);
+            itensPedido.setVisible(true);
+            itensPedido.setResizable(false);
+        }*/
+        
     }//GEN-LAST:event_confirmaPizzaActionPerformed
 
     private void calculaPrecoActionPerformed(java.awt.event.ActionEvent evt) {                                             
@@ -541,7 +570,10 @@ public class FazerPedido extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FazerPedido().setVisible(true);
+                /*FazerPedido fazerPedido = new FazerPedido();
+                fazerPedido.setVisible(true);
+                fazerPedido.setResizable(false);*/
+                new FazerPedido(informaPizza).setVisible(true);
             }
         });
     }
@@ -574,64 +606,5 @@ public class FazerPedido extends javax.swing.JFrame {
     private javax.swing.JLabel tamanho;
     private javax.swing.JLabel tipoTamanho;
     // End of variables declaration//GEN-END:variables
-
-    private static class Pizza {
-
-        private String formato;
-        private double tamanhoCm;
-        private double tamanhoCm2;
-        private ArrayList<Sabor> sabor = new ArrayList<>();
-        private double precoFinal;
-        private boolean doisSabores;
-
-        public void setFormato(String formato) {
-            this.formato = formato;
-        }
-
-        public void setTamanhoCm(double tamanhoCm) {
-            this.tamanhoCm = tamanhoCm;
-        }
-
-        public void setTamanhoCm2(double tamanhoCm2) {
-            this.tamanhoCm2 = tamanhoCm2;
-        }
-
-        public void setSabor(int posicao, Sabor novoSabor) {
-            sabor.add(posicao, novoSabor);
-        }
-
-        public void setPrecoFinal(double precoFinal) {
-            this.precoFinal = precoFinal;
-        }
-
-        public void setDoisSabores(boolean doisSabores) {
-            this.doisSabores = doisSabores;
-        }
-        
-        public String getFormato() {
-            return formato;
-        }
-
-        public double getTamanhoCm() {
-            return tamanhoCm;
-        }
-
-        public double getTamanhoCm2() {
-            return tamanhoCm2;
-        }
-
-        public String getSabor(int teste) {
-            return sabor.get(teste).getNome();
-        }
-
-        public double getPrecoFinal() {
-            return precoFinal;
-        }
-        
-        public boolean getDoisSabores() {
-            return doisSabores;
-        }
-        
-    }
 
 }
